@@ -1,7 +1,9 @@
 package com.example.demo.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import java.util.List;
+
 import java.util.Date;
 @Entity
 public class Borrower {
@@ -12,6 +14,7 @@ public class Borrower {
     private String email;
 
     @OneToMany(mappedBy = "borrower", cascade = CascadeType.ALL)
+    @JsonIgnore
     private List<Loan> loans;
 
     // Getters e Setters
