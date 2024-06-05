@@ -3,8 +3,8 @@ WORKDIR /app
 COPY . .
 RUN mvn clean package -X -DskipTests
 
-FROM openjdk:21-jdk
+FROM openjdk:17-jdk
 WORKDIR /app
-COPY --from=build ./app/target/.jar ./demo-0.0.1-SNAPSHOT.jar.jar
+COPY --from=build /app/target/demo-0.0.1-SNAPSHOT.jar ./demo-0.0.1-SNAPSHOT.jar
 EXPOSE 8080
-ENTRYPOINT java -jar demo-0.0.1-SNAPSHOT.jar*.jar
+ENTRYPOINT ["java", "-jar", "demo-0.0.1-SNAPSHOT.jar"]
