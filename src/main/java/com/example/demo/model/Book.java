@@ -23,6 +23,11 @@ public class Book {
     @JsonIgnore
     private List<Loan> loans;
 
+    @OneToMany(mappedBy = "book", cascade = CascadeType.ALL)
+    @JsonManagedReference
+    @JsonIgnore
+    private List<Purchased> purchaseds;
+
     // Getters e Setters
 
     public Long getId() {
@@ -63,5 +68,13 @@ public class Book {
 
     public void setLoans(List<Loan> loans) {
         this.loans = loans;
+    }
+
+    public List<Purchased> getPurchaseds() {
+        return purchaseds;
+    }
+
+    public void setPurchased(List<Purchased> purchaseds) {
+        this.purchaseds = purchaseds;
     }
 }
