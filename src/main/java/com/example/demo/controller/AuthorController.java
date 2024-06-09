@@ -5,7 +5,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import com.example.demo.model.Author;
 import com.example.demo.service.AuthorService;
-
 import java.util.List;
 
 @RestController
