@@ -19,9 +19,16 @@ public class Book {
     private Author author;
 
     @OneToMany(mappedBy = "book", cascade = CascadeType.ALL)
-    @JsonManagedReference
     @JsonIgnore
     private List<Loan> loans;
+
+    @ManyToMany
+    @JoinTable(
+            name = "book_category",
+            joinColumns = @JoinColumn(name = "book_id"),
+            inverseJoinColumns = @JoinColumn(name = "category_id")
+    )
+    private List<Category> categories;
 
     // Getters e Setters
 
@@ -63,5 +70,13 @@ public class Book {
 
     public void setLoans(List<Loan> loans) {
         this.loans = loans;
+    }
+
+    public List<Category> getCategories() {
+        return categories;
+    }
+
+    public void setCategories(List<Category> categories) {
+        this.categories = categories;
     }
 }
