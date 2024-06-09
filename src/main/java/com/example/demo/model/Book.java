@@ -2,7 +2,9 @@ package com.example.demo.model;
 
 import jakarta.persistence.*;
 import java.util.List;
-import java.util.Date;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Book {
     @Id
@@ -13,9 +15,12 @@ public class Book {
 
     @ManyToOne
     @JoinColumn(name = "author_id")
+    @JsonManagedReference
     private Author author;
 
     @OneToMany(mappedBy = "book", cascade = CascadeType.ALL)
+    @JsonManagedReference
+    @JsonIgnore
     private List<Loan> loans;
 
     // Getters e Setters

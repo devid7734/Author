@@ -1,5 +1,6 @@
 package com.example.demo.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import java.util.List;
 import java.util.Date;
@@ -17,6 +18,7 @@ public class Loan {
 
     @ManyToOne
     @JoinColumn(name = "borrower_id")
+    @JsonIgnore
     private Borrower borrower;
 
     // Getters e Setters
