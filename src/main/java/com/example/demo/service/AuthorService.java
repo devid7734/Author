@@ -4,8 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.example.demo.model.Author;
 import com.example.demo.repository.AuthorRepository;
-
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class AuthorService {
@@ -20,6 +20,10 @@ public class AuthorService {
         return authorRepository.findAll();
     }
 
+ public Optional<Author> getAuthor(Long id) {
+        return authorRepository.findById(id);
+    }
+    
     public Author updateAuthor(Long id, Author authorDetails) {
         Author author = authorRepository.findById(id).orElseThrow();
         author.setName(authorDetails.getName());
