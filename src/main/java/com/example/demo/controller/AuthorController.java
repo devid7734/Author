@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.*;
 import com.example.demo.model.Author;
 import com.example.demo.service.AuthorService;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/authors")
@@ -21,6 +22,11 @@ public class AuthorController {
     @GetMapping
     public List<Author> getAuthors() {
         return authorService.getAuthors();
+    }
+
+     @GetMapping("/{id}")
+    public Optional<Author> getAuthor(@PathVariable Long id) {
+        return authorService.getAuthor(id);
     }
 
     @PutMapping("/{id}")
